@@ -1,4 +1,4 @@
-import { User } from "@/generated/prisma";
+import { User } from "@prisma/client";
 import { checkAuth } from "./auth";
 import prisma from "@/lib/prisma";
 

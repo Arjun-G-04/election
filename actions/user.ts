@@ -1,6 +1,6 @@
 "use server";
 
-import { User } from "@/generated/prisma";
+import { User } from "@prisma/client";
 import { protectedFn } from "./protector";
 
 export const getUserDetails = protectedFn(async (user: User) => {
