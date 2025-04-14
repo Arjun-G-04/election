@@ -1,6 +1,6 @@
 "use client";
 
-import { randomBytes } from "node:crypto";
+import { randomBytes } from "crypto";
 
 function generateRandomString(length: number) {
 	return randomBytes(length).toString("hex");
