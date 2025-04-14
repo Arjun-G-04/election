@@ -1,6 +1,6 @@
 "use client";
 
-import { randomBytes } from "crypto";
+import { randomBytes } from "node:crypto";
 
 function generateRandomString(length: number) {
 	return randomBytes(length).toString("hex");
@@ -22,9 +22,7 @@ function generateDAuthLoginUrl() {
 
 	const searchParams = new URLSearchParams();
 	for (const key in params) {
-		if (params.hasOwnProperty(key)) {
-			searchParams.append(key, params[key as keyof typeof params]);
-		}
+		searchParams.append(key, params[key as keyof typeof params]);
 	}
 	const authorizationUrl = `${dauthBaseUrl}?${searchParams.toString()}`;
 
@@ -39,7 +37,8 @@ export default function Login() {
 				document.cookie = `dauth_state=${state}; path=/; max-age=3600;`;
 				window.location.href = authorizationUrl;
 			}}
-			className="bg-green-500 p-5"
+			type="button"
+			className="bg-green-400 text-green-900 font-bold px-5 py-2 mt-5 rounded-sm hover:cursor-pointer"
 		>
 			Login with DAuth
 		</button>

@@ -8,6 +8,8 @@ export default function Logout() {
 			onClick={() => {
 				logout();
 			}}
+			type="button"
+			className="mt-auto px-5 py-2 bg-red-300 text-red-900 font-bold rounded-sm hover:cursor-pointer"
 		>
 			Logout
 		</button>

@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import * as jose from "jose";
 import prisma from "@/lib/prisma";
 import { randomBytes } from "crypto";
@@ -102,6 +102,15 @@ export async function GET(req: NextRequest) {
 	}
 
 	const userInfo: DAuthUserInfo = await userInfoResponse.json();
+
+	if (
+		!userInfo.email.startsWith("111122") ||
+		Number(userInfo.email.slice(8, 9)) % 2 === 0
+	) {
+		return new NextResponse("You are not eligible to vote", {
+			status: 403,
+		});
+	}
 
 	const secretKey = getSecretKey();
 	const payload = {

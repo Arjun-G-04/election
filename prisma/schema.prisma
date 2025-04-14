@@ -12,4 +12,29 @@ model User {
   name    String
   email   String @unique
   voterId String @unique
+  votes   Vote?
+}
+
+model Candidate {
+  id     String @id @default(cuid())
+  name   String
+  photo  String
+  votes1 Vote[] @relation("candidate1")
+  votes2 Vote[] @relation("candidate2")
+}
+
+model Vote {
+  id           String    @id @default(cuid())
+  user         User      @relation(fields: [userId], references: [id])
+  userId       String    @unique
+  candidate1   Candidate @relation("candidate1", fields: [candidate1Id], references: [id])
+  candidate1Id String
+  candidate2   Candidate @relation("candidate2", fields: [candidate2Id], references: [id])
+  candidate2Id String
+}
+
+model Constants {
+  id        Int      @id
+  startTime DateTime
+  endTime   DateTime
 }

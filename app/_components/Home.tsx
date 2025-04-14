@@ -19,15 +19,19 @@ export default function Home() {
 		return <div>Error: {user.error.message}</div>;
 	}
 
-	if (user.data == false) {
+	if (user.data === false) {
 		return <div>Not authenticated</div>;
 	}
 
 	return (
-		<div>
-			<div>Welcome {user.data.name}</div>
-			<div>Your email is {user.data.email}</div>
-			<div>Your voter id is {user.data.voterId}</div>
+		<div className="flex flex-col justify-center items-start">
+			<div className="text-2xl">
+				Welcome <strong>{user.data.name}</strong>,
+			</div>
+			<div className="text-lg">
+				Your Voter ID is{" "}
+				<strong>{user.data.voterId.toUpperCase()}</strong>
+			</div>
 		</div>
 	);
 }
