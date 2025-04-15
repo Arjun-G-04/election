@@ -68,7 +68,7 @@ export default function Status() {
 						(voteCount.data.candidates
 							.map((cand) => cand.votes)
 							.reduce((prev, curr) => prev + curr, 0) /
-							69) *
+							(69*2)) *
 						100
 					).toFixed(2)}
 					%
